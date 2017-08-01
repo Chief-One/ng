@@ -10,15 +10,31 @@ import { ResourceService } from './services/resource.service';
 import { HomeComponent } from './components/home/home.component';
 import { AboutComponent } from './components/about/about.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
+import { SecureComponent } from './components/secure/secure.component';
+import { AuthenticatedGuard } from "app/guards/authenticated.guard";
 
 const AppRoutes: Routes = [
   {
     path: '',
+    redirectTo: 'home',
+    pathMatch: 'full'
+  },
+  {
+    path: 'home',
     component: HomeComponent
   },
   {
     path: 'about',
     component: AboutComponent
+  },
+  {
+    path: 'about/:id',
+    component: AboutComponent
+  },
+  {
+    path: 'secure',
+    component: SecureComponent,
+    canActivate: [AuthenticatedGuard]
   },
   {
     path: '**',
@@ -32,8 +48,8 @@ const AppRoutes: Routes = [
     RouterModule.forRoot(AppRoutes),
     BrowserModule
   ],
-  providers: [ResourceService],
-  declarations: [ApplicationComponent, NavigationComponent, FooterComponent, HomeComponent, AboutComponent, NotFoundComponent],
+  providers: [ResourceService, AuthenticatedGuard],
+  declarations: [ApplicationComponent, NavigationComponent, FooterComponent, HomeComponent, AboutComponent, NotFoundComponent, SecureComponent],
   bootstrap: [ApplicationComponent]
 })
 
