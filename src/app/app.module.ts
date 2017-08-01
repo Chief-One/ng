@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { ApplicationComponent } from './components/application/application.component';
@@ -46,7 +47,8 @@ const AppRoutes: Routes = [
   imports: [
     NgbModule.forRoot(),
     RouterModule.forRoot(AppRoutes),
-    BrowserModule
+    BrowserModule,
+    FormsModule
   ],
   providers: [ResourceService, AuthenticatedGuard],
   declarations: [ApplicationComponent, NavigationComponent, FooterComponent, HomeComponent, AboutComponent, NotFoundComponent, SecureComponent],

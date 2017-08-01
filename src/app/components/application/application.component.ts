@@ -2,10 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './application.component.html',
-  styles: [
-    ".padded-content { padding: 2em;}"
-  ]
+  templateUrl: './application.component.html'
 })
 export class ApplicationComponent implements OnInit {
 
