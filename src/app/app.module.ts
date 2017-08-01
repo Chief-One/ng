@@ -43,6 +43,10 @@ const AppRoutes: Routes = [
   }
 ];
 
+export function formControlFactory() {
+  return new FormControl();
+}
+
 @NgModule({
   imports: [
     NgbModule.forRoot(),
@@ -51,7 +55,7 @@ const AppRoutes: Routes = [
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [ResourceService, AuthenticatedGuard, { provide: FormControl, useFactory: () => new FormControl() }],
+  providers: [ResourceService, AuthenticatedGuard, { provide: FormControl, useFactory: formControlFactory }],
   declarations: [ApplicationComponent, NavigationComponent, FooterComponent, HomeComponent, AboutComponent, NotFoundComponent, SecureComponent],
   bootstrap: [ApplicationComponent]
 })
