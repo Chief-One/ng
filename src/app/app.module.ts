@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule, FormControl } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { ApplicationComponent } from './components/application/application.component';
@@ -48,9 +48,10 @@ const AppRoutes: Routes = [
     NgbModule.forRoot(),
     RouterModule.forRoot(AppRoutes),
     BrowserModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
-  providers: [ResourceService, AuthenticatedGuard],
+  providers: [ResourceService, AuthenticatedGuard, { provide: FormControl, useFactory: () => new FormControl() }],
   declarations: [ApplicationComponent, NavigationComponent, FooterComponent, HomeComponent, AboutComponent, NotFoundComponent, SecureComponent],
   bootstrap: [ApplicationComponent]
 })
