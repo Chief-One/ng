@@ -15,6 +15,10 @@ export class HomeComponent {
   constructor(private router: Router, public resource: ResourceService) { }
 
   navigate() {
-    this.router.navigate(['/about'])
+    this.router.navigate(['/secure'])
+  }
+
+  onSubmit(value: any) {
+    console.log(value)
   }
 }
